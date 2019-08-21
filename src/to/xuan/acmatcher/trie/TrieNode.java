@@ -25,7 +25,7 @@ public class TrieNode {
         return c;
     }
 
-    void setAsLeaf(){
+     void setAsLeaf(){
         this.isLeaf = true;
     }
 
@@ -38,11 +38,19 @@ public class TrieNode {
         this.nodePointers.put(c, node);
     }
 
-    boolean isInLeafWords(String word){
+    public boolean isLeaf(){
+        return this.isLeaf;
+    }
+
+    public boolean isInLeafWords(String word){
         return this.leafWords.contains(word);
     }
 
-    boolean isInChildNode(String c) {return this.nodePointers.containsKey(c);}
+    public boolean isInChildNode(String c) {
+        return this.nodePointers.containsKey(c);
+    }
 
-    TrieNode getChildByKey(String key) {return this.nodePointers.get(key);}
+    public TrieNode getChildByKey(String key) {
+        return this.nodePointers.get(key);
+    }
 }

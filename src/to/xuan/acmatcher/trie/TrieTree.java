@@ -1,32 +1,36 @@
 package to.xuan.acmatcher.trie;
 
 
+import java.util.Map;
 import java.util.Set;
 
 public class TrieTree {
 
+    private int maxWordSizeInTree;
+
     private Set<String> chars;
 
-    private Set<TrieNode> roots;
+    private Map<String, TrieNode> roots;
 
-    public TrieTree(Set<String> chars, Set<TrieNode> roots){
+    public TrieTree(Set<String> chars, Map<String, TrieNode> roots, int maxWordSizeInTree){
         this.chars = chars;
         this.roots = roots;
+        this.maxWordSizeInTree = maxWordSizeInTree;
+    }
+
+    public int getMaxWordSizeInTree() {
+        return maxWordSizeInTree;
     }
 
     public boolean isCharInTree(String c){
         return chars.contains(c);
     }
 
-    public void setChars(Set<String> chars) {
-        this.chars = chars;
+    public boolean isCharInRoots(String c){
+        return roots.containsKey(c);
     }
 
-    public void setRoots(Set<TrieNode> roots) {
-        this.roots = roots;
-    }
-
-    public Set<TrieNode> getRoots() {
+    public Map<String, TrieNode> getRoots() {
         return roots;
     }
 

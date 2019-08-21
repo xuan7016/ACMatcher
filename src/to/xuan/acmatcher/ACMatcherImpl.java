@@ -7,27 +7,28 @@ import java.util.*;
 
 public class ACMatcherImpl implements ACMatcher {
 
-    private TrieTree tree;
+    private TrieTreeMatcherIterator matcherIterator;
 
-    public ACMatcherImpl(TrieTree tree){
-        this.tree = tree;
+    public ACMatcherImpl(TrieTree tree, String text){
+        this.matcherIterator = new TrieTreeMatcherIterator(tree, text);
     }
 
     @Override
-    public void setTrieTree(TrieTree tree) {}
-
-    @Override
-    public List<String> matchAll(String message) {
-        return null;
+    public Set<String> matchAll() {
+        Set<String> matched = new HashSet<>();
+        while(matcherIterator.hasNext()){
+            matched.add(matcherIterator.next());
+        }
+        return matched;
     }
 
     @Override
-    public String matchOne(String message) {
-        return null;
+    public String matchOne() {
+        return (matcherIterator.hasNext()) ? matcherIterator.next() : null;
     }
 
     @Override
-    public boolean exists(String message) {
+    public boolean exists() {
         return false;
     }
 

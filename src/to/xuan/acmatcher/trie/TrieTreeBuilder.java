@@ -4,15 +4,13 @@ package to.xuan.acmatcher.trie;
 import to.xuan.acmatcher.trie.exceptions.TrieNodeNotALeafException;
 import com.sun.istack.internal.NotNull;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class TrieTreeBuilder {
 
     private static Set<String> chars;
     private static Set<TrieNode> allNodes;
-    private static Set<TrieNode> roots;
+    private static Map<String, TrieNode> roots;
 
     public static TrieTree build(String word) throws TrieNodeNotALeafException {
         return build(Collections.singletonList(word));
@@ -21,11 +19,13 @@ public class TrieTreeBuilder {
     public static TrieTree build(@NotNull Iterable<String> words) throws TrieNodeNotALeafException {
         chars = new HashSet<>();
         allNodes = new HashSet<>();
-        roots = new HashSet<>();
+        roots = new HashMap<>();
+        int maxWordLength = 0;
         for (String word : words) {
+            maxWordLength = Math.max(word.length(), maxWordLength);
             addWordToTree(word);
         }
-        return new TrieTree(chars, roots);
+        return new TrieTree(chars, roots, maxWordLength);
     }
 
     private static void addWordToTree(String word) throws TrieNodeNotALeafException {
@@ -78,7 +78,7 @@ public class TrieTreeBuilder {
         TrieNode temp = new TrieNode(c, prev);
         allNodes.add(temp);
         if (prev == null) {
-            roots.add(temp);
+            roots.put(c, temp);
         } else {
             prev.addNextNode(c, temp);
         }
@@ -95,6 +95,10 @@ public class TrieTreeBuilder {
             if (node.getC().equals(c)) return node;
         }
         return null;
+    }
+
+    private static TrieNode getMatchInNodeSet(Map<String, TrieNode> nodeSet, String c){
+        return nodeSet.get(c);
     }
 
 }

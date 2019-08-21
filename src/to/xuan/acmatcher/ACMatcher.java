@@ -7,12 +7,10 @@ import java.util.Set;
 
 public interface ACMatcher {
 
-    void setTrieTree(TrieTree tree);
+    Set<String> matchAll();
 
-    List<String> matchAll(String message);
+    String matchOne();
 
-    String matchOne(String message);
-
-    boolean exists(String message);
+    boolean exists();
 
 }
