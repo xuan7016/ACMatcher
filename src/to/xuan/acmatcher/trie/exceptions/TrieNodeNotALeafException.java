@@ -1,4 +1,4 @@
-package to.xuan.trie.exceptions;
+package to.xuan.acmatcher.trie.exceptions;
 
 public class TrieNodeNotALeafException extends Exception {
 

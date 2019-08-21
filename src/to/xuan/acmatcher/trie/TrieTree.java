@@ -9,8 +9,6 @@ public class TrieTree {
 
     private Set<TrieNode> roots;
 
-    public TrieTree(){}
-
     public TrieTree(Set<String> chars, Set<TrieNode> roots){
         this.chars = chars;
         this.roots = roots;

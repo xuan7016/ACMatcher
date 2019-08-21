@@ -14,24 +14,7 @@ public class ACMatcherImpl implements ACMatcher {
     }
 
     @Override
-    public ACMatcher build(String word) {
-        return null;
-    }
-
-    @Override
-    public ACMatcher build(String[] wordList) {
-        return null;
-    }
-
-    @Override
-    public ACMatcher build(List<String> wordList) {
-        return null;
-    }
-
-    @Override
-    public ACMatcher build(Set<String> wordList) {
-        return null;
-    }
+    public void setTrieTree(TrieTree tree) {}
 
     @Override
     public List<String> matchAll(String message) {

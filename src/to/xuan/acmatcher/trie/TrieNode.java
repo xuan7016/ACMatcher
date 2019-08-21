@@ -1,6 +1,6 @@
 package to.xuan.acmatcher.trie;
 
-import to.xuan.trie.exceptions.TrieNodeNotALeafException;
+import to.xuan.acmatcher.trie.exceptions.TrieNodeNotALeafException;
 
 import java.util.*;
 
