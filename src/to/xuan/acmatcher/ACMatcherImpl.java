@@ -9,13 +9,14 @@ public class ACMatcherImpl implements ACMatcher {
 
     private TrieTreeMatcherIterator matcherIterator;
 
-    public ACMatcherImpl(TrieTree tree, String text){
-        this.matcherIterator = new TrieTreeMatcherIterator(tree, text);
+    public ACMatcherImpl(TrieTree tree){
+        this.matcherIterator = new TrieTreeMatcherIterator(tree);
     }
 
     @Override
-    public Set<String> matchAll() {
+    public Set<String> matchAll(String text) {
         Set<String> matched = new HashSet<>();
+        matcherIterator.setText(text);
         while(matcherIterator.hasNext()){
             matched.add(matcherIterator.next());
         }
@@ -23,7 +24,8 @@ public class ACMatcherImpl implements ACMatcher {
     }
 
     @Override
-    public String matchOne() {
+    public String matchOne(String text) {
+        matcherIterator.setText(text);
         return (matcherIterator.hasNext()) ? matcherIterator.next() : null;
     }
 

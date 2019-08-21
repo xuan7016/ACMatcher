@@ -7,9 +7,9 @@ import java.util.Set;
 
 public interface ACMatcher {
 
-    Set<String> matchAll();
+    Set<String> matchAll(String text);
 
-    String matchOne();
+    String matchOne(String text);
 
     boolean exists();
 

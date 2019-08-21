@@ -14,9 +14,16 @@ public class TrieTreeMatcherIterator implements Iterator<String> {
     private Boolean foundByHasNext = false;
     private int index = 0;
 
-    public TrieTreeMatcherIterator(TrieTree tree, String text){
+    public TrieTreeMatcherIterator(TrieTree tree){
         this.tree = tree;
+        this.text = null;
+    }
+
+    public void setText(String text){
         this.text = text;
+        this.next = null;
+        this.foundByHasNext = false;
+        this.index = 0;
     }
 
     @Override
